@@ -1,0 +1,412 @@
+{
+  "totalAcoes": 9,
+  "totalCanceladas": 2,
+  "totalConcluidas": 0,
+  "totalCriadas": 1,
+  "totalEmProgresso": 3,
+  "totalEmAtrasoStatus": 3,
+  "totalSobrestadas": 0,
+  "totalAguardandoPrazo": 0,
+  "totalAcoesAdiantadas": 1,
+  "totalAcoesNoPrazo": 1,
+  "totalAcoesAtrasadasCronograma": 7,
+  "totalObjetivosEstrategicos": 3,
+  "totalObjetivosCumpridos": 0,
+  "totalIndicadores": 6,
+  "totalRiscos": 7,
+  "acoes": [
+    {
+      "id": 412,
+      "nome": "Ação Mobile",
+      "statusId": 4,
+      "dataInicio": "2026-01-01",
+      "dataFim": "2026-01-31",
+      "dataUltimaAtualizacao": "2025-12-22",
+      "percentualConcluido": 0,
+      "progressoEsperado": 50,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 30,
+      "diasDecorridos": 15,
+      "diasRestantes": 15,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 1,
+      "setorNome": "ADMINISTRAÇÃO GERAL",
+      "setorSigla": "ADM",
+      "setorSuperiorId": 1,
+      "setorSuperiorNome": "ADMINISTRAÇÃO GERAL",
+      "objetivos": [
+        {
+          "id": 2,
+          "nome": "AMPLIAÇÃO DOS PROJETOS DE REINTEGRAÇÃO SOCIAL DA PESSOA PRESA E DO EGRESSO"
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 10,
+          "nome": "PARTICIPAÇÃO DE PESSOAS PRESAS EM CURSOS PROFISSIONALIZANTES E PREPARAÇÃO PARA O MERCADO DE TRABALHO."
+        }
+      ],
+      "riscos": [
+        {
+          "id": 15,
+          "descricao": "ASSISTÊNCIA BIOPSICOSSOCIAL INSUFICIENTE DEVIDO À FALTA DE PROFISSIONAIS E MEDICAMENTOS.",
+          "nivelRisco": "Médio",
+          "impacto": "Menor"
+        },
+        {
+          "id": 17,
+          "descricao": "AUSÊNCIA DE CAPACITAÇÃO CONTINUADA QUANTO A TEMÁTICA DAS ALTERNATIVAS PENAIS AOS SERVIDORES DA GECIAP.",
+          "nivelRisco": "Alto",
+          "impacto": "Maior"
+        }
+      ]
+    },
+    {
+      "id": 411,
+      "nome": "Ação exploratorio 1",
+      "statusId": 5,
+      "dataInicio": "2025-12-01",
+      "dataFim": "2025-12-31",
+      "dataUltimaAtualizacao": "2025-12-17",
+      "percentualConcluido": 0,
+      "progressoEsperado": 100,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 30,
+      "diasDecorridos": 46,
+      "diasRestantes": 0,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 1,
+      "setorNome": "ADMINISTRAÇÃO GERAL",
+      "setorSigla": "ADM",
+      "setorSuperiorId": 1,
+      "setorSuperiorNome": "ADMINISTRAÇÃO GERAL",
+      "objetivos": [
+        {
+          "id": 2,
+          "nome": "AMPLIAÇÃO DOS PROJETOS DE REINTEGRAÇÃO SOCIAL DA PESSOA PRESA E DO EGRESSO"
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 10,
+          "nome": "PARTICIPAÇÃO DE PESSOAS PRESAS EM CURSOS PROFISSIONALIZANTES E PREPARAÇÃO PARA O MERCADO DE TRABALHO."
+        }
+      ],
+      "riscos": [
+        {
+          "id": 15,
+          "descricao": "ASSISTÊNCIA BIOPSICOSSOCIAL INSUFICIENTE DEVIDO À FALTA DE PROFISSIONAIS E MEDICAMENTOS.",
+          "nivelRisco": "Médio",
+          "impacto": "Menor"
+        }
+      ]
+    },
+    {
+      "id": 415,
+      "nome": "Mitigação das facções nos presidios",
+      "statusId": 4,
+      "dataInicio": "2026-01-01",
+      "dataFim": "2026-02-01",
+      "dataUltimaAtualizacao": "2025-12-29",
+      "percentualConcluido": 100,
+      "progressoEsperado": 48.39,
+      "situacaoCronograma": "ADIANTADA",
+      "diasTotais": 31,
+      "diasDecorridos": 15,
+      "diasRestantes": 16,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 128895,
+      "setorNome": "CORREGEDORIA SETORIAL",
+      "setorSigla": "GECOR",
+      "setorSuperiorId": 108805,
+      "setorSuperiorNome": "GABINETE DO DIRETOR-GERAL DE POLÍCIA PENAL",
+      "objetivos": [
+        {
+          "id": 2,
+          "nome": "AMPLIAÇÃO DOS PROJETOS DE REINTEGRAÇÃO SOCIAL DA PESSOA PRESA E DO EGRESSO"
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 10,
+          "nome": "PARTICIPAÇÃO DE PESSOAS PRESAS EM CURSOS PROFISSIONALIZANTES E PREPARAÇÃO PARA O MERCADO DE TRABALHO."
+        }
+      ],
+      "riscos": [
+        {
+          "id": 14,
+          "descricao": "FALTA DE APERFEIÇOAMENTO DOS MECANISMOS INSTITUCIONAIS, QUE VISEM ASSEGURAR A EFETIVA PRESTAÇÃO DA ASSISTÊNCIA RELIGIOSA, AJUDANDO NA RESSOCIALIZAÇÃO",
+          "nivelRisco": "Alto",
+          "impacto": "Moderado"
+        }
+      ]
+    },
+    {
+      "id": 408,
+      "nome": "teste",
+      "statusId": 5,
+      "dataInicio": "2025-12-14",
+      "dataFim": "2025-12-31",
+      "dataUltimaAtualizacao": "2026-01-14",
+      "percentualConcluido": 0,
+      "progressoEsperado": 100,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 17,
+      "diasDecorridos": 33,
+      "diasRestantes": 0,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 105359,
+      "setorNome": "CASA DE PRISÃO PROVISÓRIA APARECIDA DE GOIÂNIA",
+      "setorSigla": "CPP APª DE GOIANIA",
+      "setorSuperiorId": 109158,
+      "setorSuperiorNome": "1ª COORDENAÇÃO REGIONAL DE POLÍCIA PENAL - 1ª CRP",
+      "objetivos": [
+        {
+          "id": 2,
+          "nome": "AMPLIAÇÃO DOS PROJETOS DE REINTEGRAÇÃO SOCIAL DA PESSOA PRESA E DO EGRESSO"
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 11,
+          "nome": "PARTICIPAÇÃO DE PESSOAS PRESAS EM ATIVIDADES DE ENSINO FORMAL"
+        }
+      ],
+      "riscos": [
+        {
+          "id": 51,
+          "descricao": "NÃO AMPLIAÇÃO DOS PROJETOS DE REINTEGRAÇÃO SOCIAL DA PESSOA PRESA E DO EGRESSO",
+          "nivelRisco": "Baixo",
+          "impacto": "Menor"
+        }
+      ]
+    },
+    {
+      "id": 413,
+      "nome": "Teste Sávio",
+      "statusId": 1,
+      "dataInicio": "2026-01-01",
+      "dataFim": "2026-07-31",
+      "dataUltimaAtualizacao": "2025-12-23",
+      "percentualConcluido": 0,
+      "progressoEsperado": 7.11,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 211,
+      "diasDecorridos": 15,
+      "diasRestantes": 196,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 148138,
+      "setorNome": "UNIDADE DE POLÍCIA PENAL REGIONAL DE CAIAPONIA",
+      "setorSigla": "UPR CAIAPONIA",
+      "setorSuperiorId": 109162,
+      "setorSuperiorNome": "5ª COORDENAÇÃO REGIONAL DE POLÍCIA PENAL - 5ª CRP",
+      "objetivos": [
+        {
+          "id": 3,
+          "nome": "MONITORAMENTO DE PROCESSOS E PROJETOS DE FORMA EFICIENTE PARA FACILITAR A GOVERNANÇA COM DECISÕES BASEADAS EM DADOS E INFORMAÇÕES."
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 19,
+          "nome": "APRESENTAÇÕES DE DADOS POR MEIO DE FERRAMENTAS TECNOLÓGICAS."
+        }
+      ],
+      "riscos": [
+        {
+          "id": 2,
+          "descricao": "COMUNICAÇÃO DIRETA DAS GERÊNCIAS JUNTO À DIRETORIA-GERAL, SEM DELIBERAÇÃO DA SUPERINTENDÊNCIA",
+          "nivelRisco": "Médio",
+          "impacto": "Menor"
+        }
+      ]
+    },
+    {
+      "id": 414,
+      "nome": "Ação Gantt reteste...",
+      "statusId": 5,
+      "dataInicio": "2025-12-23",
+      "dataFim": "2025-12-31",
+      "dataUltimaAtualizacao": "2025-12-23",
+      "percentualConcluido": 0,
+      "progressoEsperado": 100,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 8,
+      "diasDecorridos": 24,
+      "diasRestantes": 0,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 105414,
+      "setorNome": "UNIDADE DE POLÍCIA PENAL REGIONAL FEMININA DE BARRO ALTO",
+      "setorSigla": "UPR FEMININA BARRO ALTO",
+      "setorSuperiorId": 109164,
+      "setorSuperiorNome": "7ª COORDENAÇÃO REGIONAL DE POLÍCIA PENAL - 7ª CRP",
+      "objetivos": [
+        {
+          "id": 2,
+          "nome": "AMPLIAÇÃO DOS PROJETOS DE REINTEGRAÇÃO SOCIAL DA PESSOA PRESA E DO EGRESSO"
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 10,
+          "nome": "PARTICIPAÇÃO DE PESSOAS PRESAS EM CURSOS PROFISSIONALIZANTES E PREPARAÇÃO PARA O MERCADO DE TRABALHO."
+        }
+      ],
+      "riscos": [
+        {
+          "id": 15,
+          "descricao": "ASSISTÊNCIA BIOPSICOSSOCIAL INSUFICIENTE DEVIDO À FALTA DE PROFISSIONAIS E MEDICAMENTOS.",
+          "nivelRisco": "Médio",
+          "impacto": "Menor"
+        }
+      ]
+    },
+    {
+      "id": 416,
+      "nome": "AÇÃO DE MÉDIA PRIORIDADE 3 MESES",
+      "statusId": 1,
+      "dataInicio": "2026-01-05",
+      "dataFim": "2026-03-31",
+      "dataUltimaAtualizacao": "2026-01-05",
+      "percentualConcluido": 0,
+      "progressoEsperado": 12.94,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 85,
+      "diasDecorridos": 11,
+      "diasRestantes": 74,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 133284,
+      "setorNome": "GRUPAMENTO DE OPERAÇÕES PENITENCIÁRIAS ESPECIAIS - GOPE",
+      "setorSigla": "GOPE/DGPP",
+      "setorSuperiorId": 129049,
+      "setorSuperiorNome": "GERÊNCIA DE SEGURANÇA E MONITORAMENTO",
+      "objetivos": [
+        {
+          "id": 1,
+          "nome": "GARANTIR A SEGURANÇA DOS PRESÍDIOS E O CONTROLE DO CÁRCERE"
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 3,
+          "nome": "MATERIAIS ILÍCITOS INTERCEPTADOS."
+        }
+      ],
+      "riscos": [
+        {
+          "id": 44,
+          "descricao": "AUMENTO DOS EVENTOS NEGATIVOS COM IMPACTOS NA SEGURANÇA E CONTROLE DO CÁRCERE. AÇÃO: CRIAR PLANO ESTRATÉGICO DE TRATAMENTO DO RISCO DE ACORDO COM A REALIDADE DE CADA REGIONAL PRISIONAL PARA COIBIR EVENTOS NEGATIVOS - REBELIÕES / MOTINS",
+          "nivelRisco": "Alto",
+          "impacto": "Moderado"
+        }
+      ]
+    },
+    {
+      "id": 409,
+      "nome": "AÇÃO DE 1 ANO",
+      "statusId": 4,
+      "dataInicio": "2026-01-01",
+      "dataFim": "2027-02-28",
+      "dataUltimaAtualizacao": "2025-12-18",
+      "percentualConcluido": 0,
+      "progressoEsperado": 3.55,
+      "situacaoCronograma": "NO_PRAZO",
+      "diasTotais": 423,
+      "diasDecorridos": 15,
+      "diasRestantes": 408,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 133284,
+      "setorNome": "GRUPAMENTO DE OPERAÇÕES PENITENCIÁRIAS ESPECIAIS - GOPE",
+      "setorSigla": "GOPE/DGPP",
+      "setorSuperiorId": 129049,
+      "setorSuperiorNome": "GERÊNCIA DE SEGURANÇA E MONITORAMENTO",
+      "objetivos": [
+        {
+          "id": 3,
+          "nome": "MONITORAMENTO DE PROCESSOS E PROJETOS DE FORMA EFICIENTE PARA FACILITAR A GOVERNANÇA COM DECISÕES BASEADAS EM DADOS E INFORMAÇÕES."
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 18,
+          "nome": "MONITORAMENTO DOS PROJETOS PRIORITÁRIOS"
+        }
+      ],
+      "riscos": [
+        {
+          "id": 35,
+          "descricao": "RESOLUÇÕES INTEMPESTIVAS DE DEMANDAS ADMINISTRATIVAS",
+          "nivelRisco": "Baixo",
+          "impacto": "Moderado"
+        }
+      ]
+    },
+    {
+      "id": 410,
+      "nome": "AÇÃO DE 9 MESES",
+      "statusId": 3,
+      "dataInicio": "2026-01-01",
+      "dataFim": "2026-09-30",
+      "dataUltimaAtualizacao": "2025-12-16",
+      "percentualConcluido": 0,
+      "progressoEsperado": 5.51,
+      "situacaoCronograma": "ATRASADA",
+      "diasTotais": 272,
+      "diasDecorridos": 15,
+      "diasRestantes": 257,
+      "concluidaAntesDoPrazo": null,
+      "concluidaNoPrazo": null,
+      "concluidaNoUltimoDia": null,
+      "concluidaAposPrazo": null,
+      "setorId": 133284,
+      "setorNome": "GRUPAMENTO DE OPERAÇÕES PENITENCIÁRIAS ESPECIAIS - GOPE",
+      "setorSigla": "GOPE/DGPP",
+      "setorSuperiorId": 129049,
+      "setorSuperiorNome": "GERÊNCIA DE SEGURANÇA E MONITORAMENTO",
+      "objetivos": [
+        {
+          "id": 3,
+          "nome": "MONITORAMENTO DE PROCESSOS E PROJETOS DE FORMA EFICIENTE PARA FACILITAR A GOVERNANÇA COM DECISÕES BASEADAS EM DADOS E INFORMAÇÕES."
+        }
+      ],
+      "indicadores": [
+        {
+          "id": 20,
+          "nome": "REFORMULAÇÃO DA ESTRUTURA ORGANIZACIONAL"
+        }
+      ],
+      "riscos": [
+        {
+          "id": 2,
+          "descricao": "COMUNICAÇÃO DIRETA DAS GERÊNCIAS JUNTO À DIRETORIA-GERAL, SEM DELIBERAÇÃO DA SUPERINTENDÊNCIA",
+          "nivelRisco": "Médio",
+          "impacto": "Menor"
+        }
+      ]
+    }
+  ]
+}

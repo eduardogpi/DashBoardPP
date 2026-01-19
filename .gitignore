@@ -1,0 +1,46 @@
+# Dependências
+node_modules/
+jspm_packages/
+
+# Build e Saída
+dist/
+build/
+.next/
+out/
+.vercel/
+
+# Logs e Variáveis de Ambiente
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+response.json
+response_*.json
+
+# Testes e Cobertura
+coverage/
+.nyc_output/
+*.lcov
+
+# Editores e IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.cache/
+.temp/
+*.tgz
+*.tar.gz

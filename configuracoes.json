@@ -1,0 +1,33 @@
+{
+    "statusIds":
+        [
+    {
+        "descricao": "Cancelado",
+        "id": 1
+    },
+    {
+        "descricao": "Concluído",
+        "id": 2
+    },
+    {
+        "descricao": "Criado",
+        "id": 3
+    },
+    {
+        "descricao": "Em Progresso",
+        "id": 4
+    },
+    {
+        "descricao": "Em Atraso",
+        "id": 5
+    },
+    {
+        "descricao": "Sobrestado",
+        "id": 6
+    },
+    {
+        "descricao": "Aguardando Prazo",
+        "id": 7
+    }
+    ]
+}
