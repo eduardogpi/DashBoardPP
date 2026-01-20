@@ -314,7 +314,7 @@ export default function ActionsBySector() {
 
             {/* Riscos */}
             <div>
-              <Divider orientation="left" className="!m-0 !mb-4"><WarningOutlined /> Riscos e Impedimentos</Divider>
+              <Divider orientation="left" className="!m-0 !mb-4"><WarningOutlined /> Riscos</Divider>
               <List
                 grid={{ gutter: 16, column: 1 }}
                 dataSource={selectedAction.riscos}

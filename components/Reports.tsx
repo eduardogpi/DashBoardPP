@@ -26,7 +26,7 @@ const reports = [
   },
   {
     id: 3,
-    title: "Matriz de Riscos e Impedimentos",
+    title: "Matriz de Riscos",
     description: "Relatório de riscos identificados, classificação de impacto e planos de mitigação.",
     icon: <AlertOutlined className="text-orange-500" />,
     date: "Atualizado ontem"
