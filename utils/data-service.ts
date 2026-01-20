@@ -366,9 +366,10 @@ export const getUnitsPerformance = (filterSetor?: string | string[], period?: st
     unit.totalAcoes++
     unit.mediaProgresso += acao.percentualConcluido
     
-    if (acao.situacaoCronograma === 'ATRASADA') unit.acoesAtrasadas++
-    if (acao.percentualConcluido >= 100) unit.acoesConcluidas++
-    else if (acao.percentualConcluido > 0) unit.acoesEmAndamento++
+    // Contagem baseada nos IDs de status do configuracoes.json
+    if (acao.statusId === 5) unit.acoesAtrasadas++ // Em Atraso
+    if (acao.statusId === 2) unit.acoesConcluidas++ // Concluído
+    if (acao.statusId === 4) unit.acoesEmAndamento++ // Em Progresso
   })
 
   // Calcular médias finais
