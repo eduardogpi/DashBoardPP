@@ -234,8 +234,8 @@ export default function ActionsBySector() {
             {/* Status e Setor */}
             <div className="flex flex-wrap gap-4 justify-between items-center bg-background-light dark:bg-background-dark p-4 rounded-lg">
               <div className="space-y-1">
-                <p className="text-xs text-text-secondary-light">Setor Responsável</p>
-                <p className="font-semibold text-text-primary-light flex items-center gap-2">
+                <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark">Setor Responsável</p>
+                <p className="font-semibold text-text-primary-light dark:text-text-primary-dark flex items-center gap-2">
                   <TeamOutlined /> {selectedAction.setorNome} ({selectedAction.setorSigla || '-'})
                 </p>
               </div>
