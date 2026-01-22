@@ -188,9 +188,10 @@ export default function Reports() {
         filters.period,
         filters.status,
         filters.objetivo,
-        filters.risco
+        filters.risco,
+        filters.indicador
       ),
-    [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco]
+    [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco, filters.indicador]
   )
 
   const actions = useMemo(
@@ -200,9 +201,10 @@ export default function Reports() {
         filters.status,
         filters.period,
         filters.objetivo,
-        filters.risco
+        filters.risco,
+        filters.indicador
       ),
-    [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco]
+    [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco, filters.indicador]
   )
 
   const risks = useMemo(
@@ -212,9 +214,10 @@ export default function Reports() {
         filters.period,
         filters.status,
         filters.objetivo,
-        filters.risco
+        filters.risco,
+        filters.indicador
       ),
-    [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco]
+    [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco, filters.indicador]
   )
 
   const reports = useMemo<Report[]>(() => {

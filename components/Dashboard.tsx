@@ -46,7 +46,14 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Carregar dados com filtro
-    const totals = getDashboardTotals(filters.setor, filters.period, filters.status, filters.objetivo, filters.risco)
+    const totals = getDashboardTotals(
+      filters.setor,
+      filters.period,
+      filters.status,
+      filters.objetivo,
+      filters.risco,
+      filters.indicador
+    )
     setKpiData({
       total: totals.total,
       emProgresso: totals.emProgresso,
@@ -58,12 +65,26 @@ export default function Dashboard() {
       aguardandoPrazo: totals.aguardandoPrazo
     })
 
-    const charts = getChartData(filters.setor, filters.period, filters.status, filters.objetivo, filters.risco)
+    const charts = getChartData(
+      filters.setor,
+      filters.period,
+      filters.status,
+      filters.objetivo,
+      filters.risco,
+      filters.indicador
+    )
     setChartData(charts)
 
-    const risks = getRisksSummary(filters.setor, filters.period, filters.status, filters.objetivo, filters.risco)
+    const risks = getRisksSummary(
+      filters.setor,
+      filters.period,
+      filters.status,
+      filters.objetivo,
+      filters.risco,
+      filters.indicador
+    )
     setRisksData(risks)
-  }, [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco])
+  }, [filters.setor, filters.period, filters.status, filters.objetivo, filters.risco, filters.indicador])
 
   return (
     <div className="space-y-6">

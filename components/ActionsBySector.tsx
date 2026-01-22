@@ -170,8 +170,8 @@ export default function ActionsBySector() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const data = useMemo(() => {
-    return getActionsList(filters.setor, filters.status, filters.period)
-  }, [filters.setor, filters.status, filters.period])
+    return getActionsList(filters.setor, filters.status, filters.period, filters.objetivo, filters.risco, filters.indicador)
+  }, [filters.setor, filters.status, filters.period, filters.objetivo, filters.risco, filters.indicador])
 
   const handleOpenModal = (acao: Acao) => {
     setSelectedAction(acao)

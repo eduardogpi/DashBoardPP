@@ -112,7 +112,13 @@ const getDateRange = (period: string) => {
 }
 
 // Helper para filtrar ações
-const getFilteredActions = (filterSetor?: string | string[], period?: string, filterObjetivo?: string, filterRisco?: string) => {
+const getFilteredActions = (
+  filterSetor?: string | string[],
+  period?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
   let actions = rawData.acoes
   
   if (filterSetor && filterSetor !== 'todos' && filterSetor.length > 0) {
@@ -147,11 +153,22 @@ const getFilteredActions = (filterSetor?: string | string[], period?: string, fi
     actions = actions.filter(a => a.riscos.some(risco => risco.descricao === filterRisco))
   }
 
+  if (filterIndicador && filterIndicador !== 'todos') {
+    actions = actions.filter(a => a.indicadores.some(ind => ind.nome === filterIndicador))
+  }
+
   return actions
 }
 
-export const getDashboardTotals = (filterSetor?: string | string[], period?: string, filterStatus?: string, filterObjetivo?: string, filterRisco?: string) => {
-  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco)
+export const getDashboardTotals = (
+  filterSetor?: string | string[],
+  period?: string,
+  filterStatus?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
+  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
   if (filterStatus && filterStatus !== 'todos') {
     const statusId = parseInt(filterStatus)
@@ -190,8 +207,15 @@ export const getDashboardTotals = (filterSetor?: string | string[], period?: str
   }
 }
 
-export const getActionsList = (filterSetor?: string | string[], filterStatus?: string, period?: string, filterObjetivo?: string, filterRisco?: string) => {
-  let filteredActions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco)
+export const getActionsList = (
+  filterSetor?: string | string[],
+  filterStatus?: string,
+  period?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
+  let filteredActions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
   // Nota: filterStatus aqui provavelmente vinha do dropdown de situacaoCronograma ou algo similar.
   // Se quisermos filtrar por statusId no futuro, precisaremos adaptar. 
@@ -217,8 +241,15 @@ export const getActionsList = (filterSetor?: string | string[], filterStatus?: s
   return filteredActions
 }
 
-export const getChartData = (filterSetor?: string | string[], period?: string, filterStatus?: string, filterObjetivo?: string, filterRisco?: string) => {
-  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco)
+export const getChartData = (
+  filterSetor?: string | string[],
+  period?: string,
+  filterStatus?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
+  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
   if (filterStatus && filterStatus !== 'todos') {
     const statusId = parseInt(filterStatus)
@@ -267,8 +298,15 @@ export const getChartData = (filterSetor?: string | string[], period?: string, f
   }
 }
 
-export const getRisksSummary = (filterSetor?: string | string[], period?: string, filterStatus?: string, filterObjetivo?: string, filterRisco?: string) => {
-  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco)
+export const getRisksSummary = (
+  filterSetor?: string | string[],
+  period?: string,
+  filterStatus?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
+  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
   if (filterStatus && filterStatus !== 'todos') {
     const statusId = parseInt(filterStatus)
@@ -341,10 +379,16 @@ const getAllDescendants = (startIds: number[]): Set<number> => {
   return result
 }
 
-export const getUnitsPerformance = (filterSetor?: string | string[], period?: string, filterObjetivo?: string, filterRisco?: string) => {
+export const getUnitsPerformance = (
+  filterSetor?: string | string[],
+  period?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
   const unitsMap = new Map<number, UnitPerformance>()
   
-  const actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco)
+  const actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
   actions.forEach(acao => {
     if (!unitsMap.has(acao.setorId)) {
@@ -386,8 +430,15 @@ export interface SuperiorRanking {
   totalAcoes: number
 }
 
-export const getTop5SuperiorRanking = (filterSetor?: string | string[], period?: string, filterStatus?: string, filterObjetivo?: string, filterRisco?: string) => {
-  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco)
+export const getTop5SuperiorRanking = (
+  filterSetor?: string | string[],
+  period?: string,
+  filterStatus?: string,
+  filterObjetivo?: string,
+  filterRisco?: string,
+  filterIndicador?: string
+) => {
+  let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
   if (filterStatus && filterStatus !== 'todos') {
     const statusId = parseInt(filterStatus)

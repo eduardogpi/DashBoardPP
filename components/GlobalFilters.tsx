@@ -35,9 +35,10 @@ export default function GlobalFilters() {
     return { treeData: allNodes, nodeMap: map }
   }, [])
 
-  const { objetivosOptions, riscosOptions } = useMemo(() => {
+  const { objetivosOptions, riscosOptions, indicadoresOptions } = useMemo(() => {
   const objetivosMap = new Map<string, Set<number>>()
   const riscosMap = new Map<string, Set<number>>()
+  const indicadoresMap = new Map<string, Set<number>>()
 
   dadosDashboard.acoes.forEach(acao => {
     acao.objetivos.forEach(obj => {
@@ -51,6 +52,12 @@ export default function GlobalFilters() {
         riscosMap.set(risco.descricao, new Set())
       }
       riscosMap.get(risco.descricao)!.add(risco.id)
+    })
+    acao.indicadores.forEach(ind => {
+      if (!indicadoresMap.has(ind.nome)) {
+        indicadoresMap.set(ind.nome, new Set())
+      }
+      indicadoresMap.get(ind.nome)!.add(ind.id)
     })
   })
 
@@ -74,7 +81,17 @@ export default function GlobalFilters() {
     })
     .sort((a, b) => a.label.localeCompare(b.label))
 
-  return { objetivosOptions, riscosOptions }
+  const indicadoresOptions = Array.from(indicadoresMap.entries())
+    .map(([nome, ids]) => {
+      const idArray = Array.from(ids)
+      return {
+        label: `${nome} (ID: ${idArray.join(', ')})`,
+        value: nome
+      }
+    })
+    .sort((a, b) => a.label.localeCompare(b.label))
+
+  return { objetivosOptions, riscosOptions, indicadoresOptions }
 }, [])
 
   const handleSetorChange = (newValue: { value: string, label: React.ReactNode }[]) => {
@@ -228,6 +245,25 @@ export default function GlobalFilters() {
               allowClear
               size="middle"
               options={[{ label: 'Todos', value: 'todos' }, ...riscosOptions]}
+              showSearch
+              filterOption={(input, option) =>
+                (option?.label as string).toLowerCase().includes(input.toLowerCase())
+              }
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 w-full max-w-3xl">
+            <span className="text-xs font-bold text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider w-20 shrink-0">
+              Indicador:
+            </span>
+            <Select
+              style={{ width: '100%', flex: 1 }}
+              value={filters.indicador === 'todos' ? 'todos' : filters.indicador}
+              onChange={(value) => updateFilter('indicador', value ?? 'todos')}
+              placeholder="Todos os indicadores"
+              allowClear
+              size="middle"
+              options={[{ label: 'Todos', value: 'todos' }, ...indicadoresOptions]}
               showSearch
               filterOption={(input, option) =>
                 (option?.label as string).toLowerCase().includes(input.toLowerCase())

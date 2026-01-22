@@ -19,8 +19,8 @@ export default function Units() {
   const [units, setUnits] = useState<UnitPerformance[]>([])
 
   useEffect(() => {
-    setUnits(getUnitsPerformance(filters.setor, filters.period))
-  }, [filters.setor, filters.period])
+    setUnits(getUnitsPerformance(filters.setor, filters.period, filters.objetivo, filters.risco, filters.indicador))
+  }, [filters.setor, filters.period, filters.objetivo, filters.risco, filters.indicador])
 
   // Agrupar unidades por setor superior
   const groupedUnits = useMemo(() => {

@@ -7,7 +7,7 @@ import { useFilters } from '../app/filter-context'
 
 export default function Top5RankingCard() {
   const { filters } = useFilters()
-  const ranking = getTop5SuperiorRanking(filters.setor, filters.period, filters.status)
+  const ranking = getTop5SuperiorRanking(filters.setor, filters.period, filters.status, filters.objetivo, filters.risco, filters.indicador)
 
   if (ranking.length === 0) {
     return (

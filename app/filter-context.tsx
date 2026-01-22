@@ -8,6 +8,7 @@ interface FilterState {
   status: 'todos' | string
   objetivo: 'todos' | string
   risco: 'todos' | string
+  indicador: 'todos' | string
 }
 
 interface FilterContextType {
@@ -25,6 +26,7 @@ export function FilterProvider({ children }: { children: ReactNode }) {
     status: 'todos',
     objetivo: 'todos',
     risco: 'todos',
+    indicador: 'todos'
   })
 
   const updateFilter = (key: keyof FilterState, value: string | string[]) => {
