@@ -65,6 +65,16 @@ export interface DashboardData {
 // Cast do JSON para o tipo correto
 const rawData = dadosDashboard as DashboardData
 
+const statusIdByDescription = configuracoes.statusIds.reduce<Record<string, number>>((acc, status) => {
+  acc[status.descricao.toLowerCase()] = status.id
+  return acc
+}, {})
+
+export const getStatusIdByDescription = (descricao: string) => {
+  if (!descricao) return null
+  return statusIdByDescription[descricao.toLowerCase()] ?? null
+}
+
 export const getStatusDescription = (statusId: number): string => {
   const status = configuracoes.statusIds.find(s => s.id === statusId)
   return status ? status.descricao : 'Desconhecido'
@@ -194,15 +204,20 @@ export const getDashboardTotals = (
     riscos += a.riscos.length
   })
 
+  const getCountByDescricao = (descricao: string) => {
+    const id = getStatusIdByDescription(descricao)
+    return id ? porStatus[id] || 0 : 0
+  }
+
   return {
     total,
-    canceladas: porStatus[1] || 0,
-    concluidas: porStatus[2] || 0,
-    criadas: porStatus[3] || 0,
-    emProgresso: porStatus[4] || 0,
-    emAtraso: porStatus[5] || 0,
-    sobrestadas: porStatus[6] || 0,
-    aguardandoPrazo: porStatus[7] || 0,
+    canceladas: getCountByDescricao('Cancelado'),
+    concluidas: getCountByDescricao('Concluído'),
+    criadas: getCountByDescricao('Criado'),
+    emProgresso: getCountByDescricao('Em Progresso'),
+    emAtraso: getCountByDescricao('Em Atraso'),
+    sobrestadas: getCountByDescricao('Sobrestado'),
+    aguardandoPrazo: getCountByDescricao('Aguardando Prazo'),
     riscos
   }
 }
@@ -390,6 +405,10 @@ export const getUnitsPerformance = (
   
   const actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
+  const atrasadoId = getStatusIdByDescription('Em Atraso')
+  const concluidoId = getStatusIdByDescription('Concluído')
+  const emProgressoId = getStatusIdByDescription('Em Progresso')
+
   actions.forEach(acao => {
     if (!unitsMap.has(acao.setorId)) {
       unitsMap.set(acao.setorId, {
@@ -410,10 +429,9 @@ export const getUnitsPerformance = (
     unit.totalAcoes++
     unit.mediaProgresso += acao.percentualConcluido
     
-    // Contagem baseada nos IDs de status do configuracoes.json
-    if (acao.statusId === 5) unit.acoesAtrasadas++ // Em Atraso
-    if (acao.statusId === 2) unit.acoesConcluidas++ // Concluído
-    if (acao.statusId === 4) unit.acoesEmAndamento++ // Em Progresso
+    if (atrasadoId && acao.statusId === atrasadoId) unit.acoesAtrasadas++
+    if (concluidoId && acao.statusId === concluidoId) unit.acoesConcluidas++
+    if (emProgressoId && acao.statusId === emProgressoId) unit.acoesEmAndamento++
   })
 
   // Calcular médias finais
@@ -436,7 +454,9 @@ export const getTop5SuperiorRanking = (
   filterStatus?: string,
   filterObjetivo?: string,
   filterRisco?: string,
-  filterIndicador?: string
+  filterIndicador?: string,
+  orderBy: 'concluidas' | 'atrasadas' = 'concluidas',
+  returnAll = false
 ) => {
   let actions = getFilteredActions(filterSetor, period, filterObjetivo, filterRisco, filterIndicador)
 
@@ -448,6 +468,8 @@ export const getTop5SuperiorRanking = (
   }
 
   const superiorMap = new Map<string, { concluidas: number; atrasadas: number; total: number }>()
+  const concluidoId = getStatusIdByDescription('Concluído')
+  const atrasadoId = getStatusIdByDescription('Em Atraso')
 
   actions.forEach(acao => {
     const superior = acao.setorSuperiorNome || 'Outros'
@@ -459,9 +481,9 @@ export const getTop5SuperiorRanking = (
     const stats = superiorMap.get(superior)!
     stats.total++
     
-    if (acao.statusId === 2) { // Concluído
+    if (concluidoId && acao.statusId === concluidoId) {
       stats.concluidas++
-    } else if (acao.statusId === 5) { // Em Atraso
+    } else if (atrasadoId && acao.statusId === atrasadoId) {
       stats.atrasadas++
     }
   })
@@ -473,8 +495,24 @@ export const getTop5SuperiorRanking = (
       totalAtrasadas: stats.atrasadas,
       totalAcoes: stats.total
     }))
-    .sort((a, b) => b.totalConcluidas - a.totalConcluidas)
-    .slice(0, 5)
+    .sort((a, b) => {
+      if (orderBy === 'atrasadas') {
+        if (b.totalAtrasadas === a.totalAtrasadas) {
+          return b.totalAcoes - a.totalAcoes
+        }
+        return b.totalAtrasadas - a.totalAtrasadas
+      }
 
-  return ranking
+      if (b.totalConcluidas === a.totalConcluidas) {
+        return b.totalAcoes - a.totalAcoes
+      }
+
+      return b.totalConcluidas - a.totalConcluidas
+    })
+
+  if (returnAll) {
+    return ranking
+  }
+
+  return ranking.slice(0, 5)
 }

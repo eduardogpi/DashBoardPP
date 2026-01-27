@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Row, Col, Card, Badge, Space } from 'antd'
+import { Row, Col, Card, Badge, Space, Alert } from 'antd'
 import { 
   FileTextOutlined, 
   SyncOutlined, 
@@ -20,7 +20,7 @@ import { useFilters } from '../app/filter-context'
 
 export default function Dashboard() {
   const { filters } = useFilters()
-  
+  const [selectedTopSuperior, setSelectedTopSuperior] = useState<string | null>(null)
   const [kpiData, setKpiData] = useState({
     total: 0,
     emProgresso: 0,
@@ -197,14 +197,26 @@ export default function Dashboard() {
 
       <Row gutter={[16, 16]}>
         <Col xs={24} lg={12}>
-          <Top5RankingCard />
+          <Top5RankingCard 
+            selectedUnit={selectedTopSuperior}
+            onSelectUnit={setSelectedTopSuperior}
+          />
         </Col>
         <Col xs={24} lg={12}>
           <Top5RecentUpdates />
         </Col>
       </Row>
 
-      <ActionsBySector />
+      {selectedTopSuperior && (
+        <Alert 
+          type="info"
+          showIcon
+          message={`Filtrando ações estratégicas para a unidade superior: ${selectedTopSuperior}`}
+          className="mt-2"
+        />
+      )}
+
+      <ActionsBySector filterSuperior={selectedTopSuperior} />
     </div>
   )
 }

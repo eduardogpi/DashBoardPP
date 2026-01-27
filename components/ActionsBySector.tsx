@@ -16,6 +16,10 @@ import {
 import { useFilters } from '../app/filter-context'
 import { getActionsList, Acao, getStatusDescription, getStatusColorById } from '../utils/data-service'
 
+type ActionsBySectorProps = {
+  filterSuperior?: string | null
+}
+
 const formatDate = (dateString: string) => {
   if (!dateString) return '-'
   const [year, month, day] = dateString.split('-')
@@ -164,7 +168,7 @@ const ActionCard = ({ acao, onOpenModal }: ActionCardProps) => {
   )
 }
 
-export default function ActionsBySector() {
+export default function ActionsBySector({ filterSuperior = null }: ActionsBySectorProps) {
   const { filters } = useFilters()
   const [selectedAction, setSelectedAction] = useState<Acao | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -172,6 +176,11 @@ export default function ActionsBySector() {
   const data = useMemo(() => {
     return getActionsList(filters.setor, filters.status, filters.period, filters.objetivo, filters.risco, filters.indicador)
   }, [filters.setor, filters.status, filters.period, filters.objetivo, filters.risco, filters.indicador])
+
+  const filteredData = useMemo(() => {
+    if (!filterSuperior) return data
+    return data.filter(acao => (acao.setorSuperiorNome || 'Outros') === filterSuperior)
+  }, [data, filterSuperior])
 
   const handleOpenModal = (acao: Acao) => {
     setSelectedAction(acao)
@@ -183,7 +192,7 @@ export default function ActionsBySector() {
     setSelectedAction(null)
   }
 
-  if (data.length === 0) {
+  if (filteredData.length === 0) {
     return (
       <Card className="mt-6">
         <Empty description="Nenhuma ação encontrada para os filtros selecionados." />
@@ -198,12 +207,12 @@ export default function ActionsBySector() {
           <ProjectOutlined /> Lista de Ações Estratégicas
         </h3>
         <span className="text-xs text-text-secondary-light dark:text-text-secondary-dark">
-          {data.length} ações listadas
+          {filteredData.length} {filterSuperior ? `ações do superior ${filterSuperior}` : 'ações listadas'}
         </span>
       </div>
 
       <Row gutter={[16, 16]}>
-        {data.map((acao) => (
+        {filteredData.map((acao) => (
           <Col xs={24} md={12} xl={8} key={acao.id}>
             <ActionCard acao={acao} onOpenModal={handleOpenModal} />
           </Col>

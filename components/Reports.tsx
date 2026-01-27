@@ -17,6 +17,7 @@ import {
   getActionsList,
   getRisksSummary,
   getStatusDescription,
+  getStatusIdByDescription,
   Acao
 } from '../utils/data-service'
 
@@ -40,6 +41,8 @@ type Report = {
 }
 
 const getTopSectorsTable = (actions: Acao[]) => {
+  const concluidoId = getStatusIdByDescription('Concluído')
+  const atrasadoId = getStatusIdByDescription('Em Atraso')
   const map = new Map<string, { total: number; concluidas: number; atrasadas: number }>()
 
   actions.forEach((acao) => {
@@ -50,8 +53,8 @@ const getTopSectorsTable = (actions: Acao[]) => {
 
     const stats = map.get(key)!
     stats.total += 1
-    if (acao.statusId === 2) stats.concluidas += 1
-    if (acao.statusId === 5) stats.atrasadas += 1
+    if (concluidoId && acao.statusId === concluidoId) stats.concluidas += 1
+    if (atrasadoId && acao.statusId === atrasadoId) stats.atrasadas += 1
   })
 
   const rows = Array.from(map.entries())
@@ -80,8 +83,9 @@ const getActionHighlightsTable = (actions: Acao[]) => {
 }
 
 const getDelayedActionsTable = (actions: Acao[]) => {
+  const atrasadoId = getStatusIdByDescription('Em Atraso')
   const rows = actions
-    .filter((acao) => acao.statusId === 5)
+    .filter((acao) => atrasadoId ? acao.statusId === atrasadoId : false)
     .slice(0, 5)
     .map((acao) => [acao.nome, acao.dataFim, acao.setorSigla || acao.setorNome])
 
