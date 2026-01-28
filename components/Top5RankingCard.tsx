@@ -6,11 +6,21 @@ import { TrophyOutlined, CheckCircleOutlined, WarningOutlined } from '@ant-desig
 import { getTop5SuperiorRanking, SuperiorRanking } from '../utils/data-service'
 import { useFilters } from '../app/filter-context'
 
+/**
+ * Propriedades aceitas pelo card Top 5. Quando `selectedUnit` é definido,
+ * o componente destaca a unidade correspondente e permite alternar a seleção.
+ */
 type Top5RankingCardProps = {
   selectedUnit?: string | null
   onSelectUnit?: (unit: string | null) => void
 }
 
+/**
+ * Card Top5RankingCard
+ * Mostra as unidades superiores em destaque, permitindo alternar entre execuções
+ * concluídas ou atrasadas. Também disponibiliza um modal com o ranking completo e
+ * emite seleções para filtragem cruzada com ActionsBySector.
+ */
 export default function Top5RankingCard({ selectedUnit = null, onSelectUnit }: Top5RankingCardProps) {
   const { filters } = useFilters()
   const [mode, setMode] = useState<'concluidas' | 'atrasadas'>('concluidas')
@@ -146,6 +156,10 @@ type RankingItemProps = {
   onSelect: (unit: string) => void
 }
 
+/**
+ * Item reutilizável que representa cada unidade superior no ranking.
+ * Usado tanto no card quanto no modal para manter consistência visual.
+ */
 const RankingItem = ({ item, index, isSelected, onSelect }: RankingItemProps) => (
   <button
     type="button"

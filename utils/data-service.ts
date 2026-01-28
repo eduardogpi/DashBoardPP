@@ -93,7 +93,10 @@ export const getStatusColorById = (statusId: number): string => {
   }
 }
 
-// Helper para datas
+/**
+ * Constrói intervalos de datas para filtros de período (mês, trimestre, ano) usados
+ * em todos os agregadores. Retorna null quando o usuário seleciona "todos".
+ */
 const getDateRange = (period: string) => {
   const now = new Date()
   const year = now.getFullYear()
@@ -121,7 +124,11 @@ const getDateRange = (period: string) => {
   return { start, end }
 }
 
-// Helper para filtrar ações
+/**
+ * Aplica o pipeline de filtros comum (setor + período + objetivo + risco + indicador)
+ * e retorna a lista base de ações. Todos os cálculos derivados partem desta função,
+ * garantindo consistência entre cards e relatórios.
+ */
 const getFilteredActions = (
   filterSetor?: string | string[],
   period?: string,
@@ -170,6 +177,10 @@ const getFilteredActions = (
   return actions
 }
 
+/**
+ * Calcula os KPI principais (total por status, riscos agregados) aplicando
+ * todos os filtros globais. Usado no topo do Dashboard para alimentar os cards.
+ */
 export const getDashboardTotals = (
   filterSetor?: string | string[],
   period?: string,
@@ -222,6 +233,11 @@ export const getDashboardTotals = (
   }
 }
 
+/**
+ * Retorna a lista de ações filtradas considerando também o filtro de status,
+ * contemplando cenários legados (situação do cronograma) e filtros por statusId.
+ * A lista alimenta o componente ActionsBySector.
+ */
 export const getActionsList = (
   filterSetor?: string | string[],
   filterStatus?: string,
@@ -256,6 +272,10 @@ export const getActionsList = (
   return filteredActions
 }
 
+/**
+ * Constrói arrays de labels/series/cores usados no gráfico de status. Mantém a ordem
+ * e o esquema de cores definidos em configuracoes.json para reforçar a consistência visual.
+ */
 export const getChartData = (
   filterSetor?: string | string[],
   period?: string,
@@ -313,6 +333,10 @@ export const getChartData = (
   }
 }
 
+/**
+ * Agrega riscos por nível (Alto/Médio/Baixo) considerando os filtros ativos. O resultado
+ * alimenta o card de monitoramento de riscos.
+ */
 export const getRisksSummary = (
   filterSetor?: string | string[],
   period?: string,
@@ -394,6 +418,10 @@ const getAllDescendants = (startIds: number[]): Set<number> => {
   return result
 }
 
+/**
+ * Calcula métricas por unidade (cartões em Units) mesclando dados das ações com a
+ * estrutura hierárquica. Serve de base para as visões em grade e cascata.
+ */
 export const getUnitsPerformance = (
   filterSetor?: string | string[],
   period?: string,
@@ -448,6 +476,10 @@ export interface SuperiorRanking {
   totalAcoes: number
 }
 
+/**
+ * Monta o ranking de unidades superiores, permitindo ordenar por concluídas ou atrasadas
+ * e opcionalmente retornar o ranking completo para uso no modal do Top5.
+ */
 export const getTop5SuperiorRanking = (
   filterSetor?: string | string[],
   period?: string,

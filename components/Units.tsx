@@ -44,6 +44,11 @@ const periodLabels: Record<'todos' | 'mes' | 'trimestre' | 'ano', string> = {
   ano: 'Ano corrente'
 }
 
+/**
+ * Percorre a árvore de estrutura para encontrar o ancestral que atende ao tipo desejado.
+ * Usado para identificar superiores (Diretorias, Subsecretarias) e coordenadorias reais
+ * ao construir os agrupamentos da visão em cascata.
+ */
 const findAncestorByType = (
   startNode: EstruturaNode | undefined,
   nodesMap: Map<number, EstruturaNode>,
@@ -69,6 +74,10 @@ const findAncestorByType = (
   return null
 }
 
+/**
+ * Resolve rótulos humanos para cada unidade, garantindo que usemos os nomes definidos
+ * em estrutura.json em vez de strings livres vindas dos dados de ações.
+ */
 const resolveHierarchyLabels = (
   unit: UnitPerformance,
   nodesMap: Map<number, EstruturaNode>
@@ -117,6 +126,12 @@ type EnrichedUnit = UnitPerformance & {
   resolvedCoordenadoria: string
 }
 
+/**
+ * Units
+ * Combina as métricas calculadas em data-service com a estrutura organizacional para
+ * oferecer duas visualizações (grade e cascata). Controla filtros locais de hierarquia,
+ * exibe estados vazios e preserva seleções para tornar a navegação mais intuitiva.
+ */
 export default function Units() {
   const { filters } = useFilters()
   const [units, setUnits] = useState<UnitPerformance[]>([])

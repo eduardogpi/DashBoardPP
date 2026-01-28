@@ -18,6 +18,12 @@ import Top5RecentUpdates from './Top5RecentUpdates'
 import { getDashboardTotals, getChartData, getRisksSummary } from '../utils/data-service'
 import { useFilters } from '../app/filter-context'
 
+/**
+ * Dashboard
+ * Responsável por orquestrar os filtros globais e exibir os principais cards de status,
+ * rankings e listas. Também conecta o Top 5 com a lista de ações estratégicas por meio
+ * do estado local `selectedTopSuperior`.
+ */
 export default function Dashboard() {
   const { filters } = useFilters()
   const [selectedTopSuperior, setSelectedTopSuperior] = useState<string | null>(null)

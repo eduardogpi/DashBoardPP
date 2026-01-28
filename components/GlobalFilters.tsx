@@ -9,6 +9,11 @@ import { buildTree, Unit } from '../utils/hierarchy'
 import { useFilters } from '../app/filter-context'
 import configuracoes from '../configuracoes.json'
 
+/**
+ * GlobalFilters
+ * Centraliza a UI de filtros compartilhados pelo dashboard inteiro. Constrói as opções
+ * a partir de estrutura.json e response_*.json, mantendo os valores no FilterContext.
+ */
 export default function GlobalFilters() {
   const { filters, updateFilter } = useFilters()
 

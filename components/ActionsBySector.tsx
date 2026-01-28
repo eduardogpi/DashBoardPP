@@ -16,6 +16,10 @@ import {
 import { useFilters } from '../app/filter-context'
 import { getActionsList, Acao, getStatusDescription, getStatusColorById } from '../utils/data-service'
 
+/**
+ * Propriedades aceitas pelo componente ActionsBySector.
+ * `filterSuperior` permite aplicar o filtro proveniente do card Top 5.
+ */
 type ActionsBySectorProps = {
   filterSuperior?: string | null
 }
@@ -66,6 +70,11 @@ interface ActionCardProps {
   onOpenModal: (acao: Acao) => void
 }
 
+/**
+ * Card individual de ação, exibindo dados resumidos e oferecendo botão
+ * para abrir o modal detalhado. Mantido separado para reaproveitar o layout
+ * dentro do grid de ações listadas.
+ */
 const ActionCard = ({ acao, onOpenModal }: ActionCardProps) => {
   const [showExpected, setShowExpected] = useState(false)
 
@@ -168,6 +177,12 @@ const ActionCard = ({ acao, onOpenModal }: ActionCardProps) => {
   )
 }
 
+/**
+ * Lista de Ações Estratégicas.
+ * Consome os filtros globais (via context) e, opcionalmente, o filtro
+ * de unidade superior selecionada no card Top 5. Quando o filtro adicional
+ * está ativo, apenas ações daquela unidade são renderizadas.
+ */
 export default function ActionsBySector({ filterSuperior = null }: ActionsBySectorProps) {
   const { filters } = useFilters()
   const [selectedAction, setSelectedAction] = useState<Acao | null>(null)
